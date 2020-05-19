@@ -1,13 +1,13 @@
 # https://docs.ghost.org/supported-node-versions/
 # https://github.com/nodejs/LTS
-FROM node:6-alpine
+FROM node:12.16-alpine
 
 # grab su-exec for easy step-down from root
 RUN apk add --no-cache 'su-exec>=0.2' bash supervisor python py-pip py-setuptools ca-certificates curl groff less
 
 ENV NODE_ENV production
 
-ENV GHOST_CLI_VERSION 1.8.0
+ENV GHOST_CLI_VERSION latest
 RUN npm install -g "ghost-cli@$GHOST_CLI_VERSION"
 
 ENV GHOST_INSTALL /var/lib/ghost
